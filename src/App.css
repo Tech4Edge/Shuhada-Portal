@@ -1,0 +1,295 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #07361b;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 54, 27, 0.95) 0%,
+    rgba(7, 54, 27, 0.98) 50%,
+    rgba(5, 40, 20, 0.96) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.background-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(45, 100, 60, 0.05) 3px,
+      rgba(45, 100, 60, 0.05) 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(45, 100, 60, 0.05) 3px,
+      rgba(45, 100, 60, 0.05) 6px
+    );
+  pointer-events: none;
+}
+
+.App > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Screen fade-in for route transitions */
+@keyframes screenFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.screen-fade {
+  animation: screenFadeIn 800ms ease-out;
+}
+
+/* Color variables for 11 Corps theme */
+:root {
+  --bg-primary: #07361b;
+  --army-green: #1a4d2e;
+  --army-green-light: #2d7a4a;
+  --army-green-medium: #2d5a3d;
+  --army-green-dark: #0a2814;
+  --army-green-accent: #3d8b5f;
+  --gold-accent: #d4af37;
+  --gold-accent-light: #e6c866;
+  --button-primary: #C3B091;
+  --button-primary-hover: #D4C4A8;
+  --button-secondary: #ffffff;
+  --black: #000000;
+  --black-light: #1a1a1a;
+  --red-accent: #8b0000;
+  --red-accent-light: #a00000;
+  --white: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #b0b0b0;
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #C3B091 0%, #BDB76B 100%);
+  color: var(--bg-primary);
+  border: 2px solid #C3B091;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 15px rgba(195, 176, 145, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #D4C4A8 0%, #C3B091 100%);
+  border-color: #D4C4A8;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(195, 176, 145, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  background: linear-gradient(135deg, #9F8F7F 0%, #BDB76B 100%);
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-back {
+  position: fixed;
+  top: 2vh;
+  left: 3vw;
+  z-index: 100;
+  background-color: rgba(195, 176, 145, 0.2);
+  color: var(--white);
+  border: 2px solid #C3B091;
+  padding: clamp(1vh, 1.2vh, 1.4vh) clamp(1.5vw, 2vw, 2.5vw);
+  font-size: clamp(1rem, 1.3vw, 1.5rem);
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-back:hover {
+  background-color: #C3B091;
+  color: var(--bg-primary);
+  border-color: #D4C4A8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 10px rgba(195, 176, 145, 0.3);
+}
+
+/* Themed scrollbars (global) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #C3B091 #07361b; /* thumb track */
+}
+
+body, .App {
+  scrollbar-width: thin;
+  scrollbar-color: #C3B091 #07361b;
+}
+
+/* WebKit browsers */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #07361b;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #C3B091;
+  border-radius: 4px;
+  border: 1px solid #07361b;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #D4C4A8;
+}
+
+/* Global logo top-left */
+.logo-top-left {
+  position: fixed;
+  top: 1.5vh;
+  left: 2vw;
+  z-index: 50;
+}
+
+.logo-top-left .corps-logo {
+  width: auto;
+  height: clamp(10vh, 14vh, 18vh);
+  max-width: clamp(15vw, 20vw, 25vw);
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
+}
+
+.logo-top-right {
+  position: fixed;
+  top: 1.5vh;
+  right: 2vw;
+  z-index: 50;
+}
+
+.logo-top-right .corps-logo {
+  width: auto;
+  height: clamp(10vh, 14vh, 18vh);
+  max-width: clamp(15vw, 20vw, 25vw);
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
+}
+
+/* Responsive grid */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Typography */
+.heading-primary {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.heading-secondary {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Large screen responsiveness (40+ inches) */
+@media (min-width: 2560px) {
+  .btn-back {
+    font-size: clamp(1.2rem, 1.5vw, 1.7rem);
+    padding: clamp(1.2vh, 1.4vh, 1.6vh) clamp(2vw, 2.5vw, 3vw);
+  }
+  
+  .btn-primary {
+    font-size: clamp(1.3rem, 1.6vw, 1.9rem);
+    padding: clamp(1.8vh, 2vh, 2.2vh) clamp(2.5vw, 3vw, 3.5vw);
+  }
+  
+  .logo-top-left .corps-logo,
+  .logo-top-right .corps-logo {
+    height: clamp(12vh, 16vh, 20vh);
+    max-width: clamp(18vw, 22vw, 28vw);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heading-primary {
+    font-size: 2rem;
+  }
+  
+  .heading-secondary {
+    font-size: 1.5rem;
+  }
+  
+  .btn-primary {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}

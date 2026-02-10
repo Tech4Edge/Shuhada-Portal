@@ -1,0 +1,513 @@
+.shuhada-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2vh 3vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-back {
+  position: absolute;
+  top: 2vh;
+  left: 3vw;
+  z-index: 10;
+  background-color: rgba(195, 176, 145, 0.2);
+  color: var(--white);
+  border: 2px solid #C3B091;
+  padding: 1vh 2vw;
+  font-size: clamp(0.9rem, 1.2vw, 1.4rem);
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-back:hover {
+  background-color: #C3B091;
+  color: #07361b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 10px rgba(195, 176, 145, 0.3);
+}
+
+.shuhada-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 6vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.shuhada-content::-webkit-scrollbar {
+  display: none;
+}
+
+.shuhada-title {
+  font-size: clamp(2.5rem, 4vw, 5rem);
+  font-weight: bold;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 3vh;
+  text-shadow: 
+    2px 2px 6px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(195, 176, 145, 0.4);
+  letter-spacing: clamp(3px, 0.4vw, 6px);
+}
+
+/* Filters Section */
+.filters-section {
+  background: rgba(7, 54, 27, 0.5);
+  border: 2px solid rgba(195, 176, 145, 0.4);
+  border-radius: 10px;
+  padding: 2vh 2vw;
+  margin-bottom: 2vh;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5vh 2vw;
+  align-items: end;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+  position: relative;
+  padding-right: 2vw;
+}
+
+.filter-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5vw;
+}
+
+.filter-item label {
+  font-size: clamp(0.85rem, 1.1vw, 1.2rem);
+  color: #C3B091;
+  font-weight: 600;
+  margin-bottom: 0.3vh;
+}
+
+.filter-clear {
+  position: absolute;
+  top: 0.1vh;
+  right: 0.1vw;
+  width: clamp(1.4rem, 1.8vw, 2rem);
+  height: clamp(1.4rem, 1.8vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--red-accent);
+  font-size: clamp(1rem, 1.4vw, 1.6rem);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.filter-clear:hover {
+  color: var(--red-accent-light);
+}
+
+.filter-input,
+.filter-select {
+  padding: 1vh 1vw;
+  font-size: clamp(0.9rem, 1.1vw, 1.3rem);
+  background: rgba(7, 54, 27, 0.7);
+  border: 2px solid rgba(195, 176, 145, 0.5);
+  border-radius: 6px;
+  color: var(--white);
+  transition: all 0.3s ease;
+}
+
+.filter-date {
+  cursor: pointer;
+  position: relative;
+}
+
+.filter-date::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.filter-date::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: #C3B091;
+  box-shadow: 0 0 10px rgba(195, 176, 145, 0.3);
+}
+
+.filter-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.filter-select option {
+  background: #07361b;
+  color: var(--white);
+}
+
+/* Searchable Select Styles */
+.searchable-select-container {
+  position: relative;
+  width: 100%;
+}
+
+.searchable-input {
+  width: 100%;
+  cursor: text;
+}
+
+.searchable-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(7, 54, 27, 0.95);
+  border: 2px solid rgba(195, 176, 145, 0.5);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: -2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.searchable-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.searchable-dropdown::-webkit-scrollbar-track {
+  background: rgba(7, 54, 27, 0.5);
+}
+
+.searchable-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(195, 176, 145, 0.5);
+  border-radius: 4px;
+}
+
+.searchable-dropdown::-webkit-scrollbar-thumb:hover {
+  background: rgba(195, 176, 145, 0.7);
+}
+
+.dropdown-option {
+  padding: 1vh 1vw;
+  font-size: clamp(0.9rem, 1.1vw, 1.3rem);
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(195, 176, 145, 0.2);
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.dropdown-option:hover {
+  background: rgba(195, 176, 145, 0.2);
+  color: #C3B091;
+}
+
+.dropdown-option.selected {
+  background: rgba(195, 176, 145, 0.3);
+  color: #C3B091;
+  font-weight: 600;
+}
+
+.dropdown-option.no-results {
+  color: var(--text-secondary);
+  font-style: italic;
+  cursor: default;
+}
+
+.dropdown-option.no-results:hover {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.filter-button {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn-clear-filters {
+  background: linear-gradient(135deg, #C3B091 0%, #BDB76B 100%);
+  color: #07361b;
+  border: 2px solid #C3B091;
+  padding: 1vh 2vw;
+  font-size: clamp(0.9rem, 1.1vw, 1.3rem);
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-clear-filters:hover {
+  background: linear-gradient(135deg, #D4C4A8 0%, #C3B091 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.results-count {
+  font-size: clamp(0.9rem, 1.2vw, 1.4rem);
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 2vh;
+  font-weight: 500;
+}
+
+/* Shuhada Cards */
+.shuhada-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2.5vh 2vw;
+  padding-bottom: 3vh;
+}
+
+.shuhada-card {
+  background: rgba(7, 54, 27, 0.6);
+  border: 2px solid rgba(195, 176, 145, 0.5);
+  border-radius: 12px;
+  padding: 2vh 1.5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.shuhada-card:hover {
+  border-color: #C3B091;
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(195, 176, 145, 0.3);
+  transform: translateY(-3px);
+}
+
+.card-portrait {
+  width: 120px;
+  height: 140px;
+  border: 3px solid #C3B091;
+  border-radius: 8px;
+  margin-bottom: 1.5vh;
+  overflow: visible;
+  background: rgba(195, 176, 145, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.portrait-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(195, 176, 145, 0.2), rgba(189, 183, 107, 0.15));
+  color: var(--text-secondary);
+  font-size: clamp(0.8rem, 1vw, 1.2rem);
+  font-weight: 600;
+}
+
+.card-info {
+  width: 100%;
+  position: relative;
+}
+
+.card-type-tag {
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  padding: clamp(0.5vh, 0.8vh, 1vh) clamp(0.8vw, 1.2vw, 1.5vw);
+  font-size: clamp(0.7rem, 0.9vw, 1rem);
+  font-weight: 900;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  z-index: 2;
+  transform: rotate(-5deg);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.card-type-tag[data-type*="Shaheed"] {
+  background: linear-gradient(135deg, #8b0000 0%, #a00000 100%);
+  color: var(--white);
+}
+
+.card-type-tag[data-type*="Injury"] {
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+  color: #07361b;
+}
+
+.card-type-tag[data-type*="Ghazi"] {
+  background: linear-gradient(135deg, #228b22 0%, #32cd32 100%);
+  color: var(--white);
+}
+
+.card-rank {
+  font-size: clamp(0.9rem, 1.2vw, 1.4rem);
+  color: #C3B091;
+  font-weight: 600;
+  margin-bottom: 0.5vh;
+  text-transform: uppercase;
+}
+
+.card-name {
+  font-size: clamp(1.1rem, 1.5vw, 1.8rem);
+  color: var(--white);
+  font-weight: bold;
+  margin-bottom: 1vh;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.card-details {
+  font-size: clamp(0.85rem, 1.1vw, 1.2rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.card-unit {
+  margin-bottom: 0.3vh;
+  font-weight: 500;
+}
+
+.card-location {
+  font-weight: 400;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: clamp(1.2rem, 1.6vw, 2rem);
+  color: var(--text-secondary);
+  padding: 5vh 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .filters-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  
+  .shuhada-cards {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .shuhada-container {
+    padding: 1.5vh 2vw;
+  }
+  
+  .btn-back {
+    top: 1.5vh;
+    left: 2vw;
+    padding: 0.8vh 1.5vw;
+  }
+  
+  .shuhada-content {
+    padding-top: 8vh;
+  }
+  
+  .filters-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2vh;
+  }
+  
+  .shuhada-cards {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2vh 1.5vw;
+  }
+}
+
+/* Large screen responsiveness (40+ inch displays) */
+@media (min-width: 2560px) {
+  .shuhada-container {
+    padding: 2.5vh 4vw;
+  }
+
+  .shuhada-title {
+    font-size: clamp(3rem, 3.5vw, 4rem);
+    margin-bottom: 2.5vh;
+  }
+
+  .filters-section {
+    padding: 2.5vh 2.5vw;
+  }
+
+  .filters-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2vh 2.5vw;
+  }
+
+  .filter-input,
+  .filter-select {
+    font-size: clamp(1rem, 1.3vw, 1.5rem);
+    padding: 1.2vh 1.1vw;
+  }
+
+  .dropdown-option {
+    font-size: clamp(1rem, 1.3vw, 1.5rem);
+  }
+
+  .results-count {
+    font-size: clamp(1rem, 1.4vw, 1.6rem);
+    margin-bottom: 2.5vh;
+  }
+
+  .shuhada-cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3vh 2.5vw;
+  }
+
+  .card-portrait {
+    width: 150px;
+    height: 180px;
+  }
+
+  .card-rank {
+    font-size: clamp(1rem, 1.4vw, 1.6rem);
+  }
+
+  .card-name {
+    font-size: clamp(1.3rem, 1.7vw, 2rem);
+  }
+
+  .card-details {
+    font-size: clamp(1rem, 1.3vw, 1.5rem);
+  }
+}

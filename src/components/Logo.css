@@ -1,0 +1,24 @@
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.corps-logo-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.logo-small .corps-logo-img {
+  max-width: 80px;
+}
+
+.logo-medium .corps-logo-img {
+  max-width: 150px;
+}
+
+.logo-large .corps-logo-img {
+  max-width: 250px;
+}
