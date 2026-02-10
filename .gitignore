@@ -37,3 +37,5 @@ debug.log
 Thumbs.db
 
 node_modules/
+.git
+.gitignore
