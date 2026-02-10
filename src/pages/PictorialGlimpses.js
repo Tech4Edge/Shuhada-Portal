@@ -105,6 +105,7 @@ const PictorialGlimpses = () => {
   ];
 
   // Initialize card image indices
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const initialIndices = {};
     events.forEach(event => {
@@ -114,6 +115,7 @@ const PictorialGlimpses = () => {
   }, []);
 
   // Auto-rotate event cards every 6-8 seconds (using 7 seconds)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedEvent) return; // Don't rotate cards when in gallery view
 
@@ -266,6 +268,7 @@ const PictorialGlimpses = () => {
   };
 
   // Mouse wheel handler
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleWheel = (e) => {
       if (selectedEvent) return; // Don't scroll in gallery view
@@ -405,7 +408,7 @@ const PictorialGlimpses = () => {
         <div className="gallery-image-container">
           <img
             src={selectedEvent.galleryImages[currentImageIndex]}
-            alt={`${selectedEvent.title} - Image ${currentImageIndex + 1}`}
+            alt={`${selectedEvent.title} ${currentImageIndex + 1}`}
             className="gallery-main-image"
             onError={(e) => {
               e.target.style.display = 'none';

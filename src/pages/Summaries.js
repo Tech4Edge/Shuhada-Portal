@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Summaries.css';
 import { sampleShuhadaData } from './Shuhada';
@@ -49,7 +49,7 @@ const MONTH_LABELS = [
 const valueLabelPlugin = {
   id: 'valueLabelPlugin',
   afterDatasetsDraw(chart) {
-    const { ctx, chartArea } = chart;
+    const { ctx } = chart;
     ctx.save();
     chart.data.datasets.forEach((dataset, datasetIndex) => {
       const meta = chart.getDatasetMeta(datasetIndex);
@@ -125,6 +125,7 @@ const Summaries = () => {
   const hasHandledInitialStateRef = useRef(false);
 
   // Restore state when returning from Shuhada page, or reset to first tab when coming from Home
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const currentState = location.state;
     
