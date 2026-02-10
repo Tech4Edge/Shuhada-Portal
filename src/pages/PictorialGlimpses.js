@@ -2,6 +2,65 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PictorialGlimpses.css';
 
+// Event data - easily configurable
+// Using only generic / non-person images from the public folder
+const events = [
+  {
+    id: 1,
+    title: '11 Corps Heritage',
+    date: 'Overview',
+    coverImages: [
+      '/11_Corps_(Pakistan)_logo.png',
+      '/logo.png',
+      '/imagesonfrontpage.jfif'
+    ],
+    galleryImages: [
+      '/11_Corps_(Pakistan)_logo.png',
+      '/logo.png',
+      '/imagesonfrontpage.jfif',
+      '/image.jfif',
+      '/image2.jpg',
+      '/bg.avif'
+    ]
+  },
+  {
+    id: 2,
+    title: 'Operational Landscape',
+    date: 'Areas of Responsibility',
+    coverImages: [
+      '/bg.avif',
+      '/image.jfif',
+      '/image2.jpg'
+    ],
+    galleryImages: [
+      '/bg.avif',
+      '/image.jfif',
+      '/image2.jpg',
+      '/imagesonfrontpage.jfif',
+      '/11_Corps_(Pakistan)_logo.png',
+      '/logo.png'
+    ]
+  },
+  {
+    id: 3,
+    title: 'Pictorial Highlights',
+    date: '11 Corps',
+    coverImages: [
+      '/imagesonfrontpage.jfif',
+      '/image.jfif',
+      '/bg.avif'
+    ],
+    galleryImages: [
+      '/imagesonfrontpage.jfif',
+      '/image.jfif',
+      '/image2.jpg',
+      '/bg.avif',
+      '/11_Corps_(Pakistan)_logo.png',
+      '/logo.png'
+    ]
+  }
+];
+
 const PictorialGlimpses = () => {
   const navigate = useNavigate();
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -45,67 +104,7 @@ const PictorialGlimpses = () => {
     return () => window.removeEventListener('resize', updateCardWidth);
   }, []);
 
-  // Event data - easily configurable
-  // Using only generic / non-person images from the public folder
-  const events = [
-    {
-      id: 1,
-      title: '11 Corps Heritage',
-      date: 'Overview',
-      coverImages: [
-        '/11_Corps_(Pakistan)_logo.png',
-        '/logo.png',
-        '/imagesonfrontpage.jfif'
-      ],
-      galleryImages: [
-        '/11_Corps_(Pakistan)_logo.png',
-        '/logo.png',
-        '/imagesonfrontpage.jfif',
-        '/image.jfif',
-        '/image2.jpg',
-        '/bg.avif'
-      ]
-    },
-    {
-      id: 2,
-      title: 'Operational Landscape',
-      date: 'Areas of Responsibility',
-      coverImages: [
-        '/bg.avif',
-        '/image.jfif',
-        '/image2.jpg'
-      ],
-      galleryImages: [
-        '/bg.avif',
-        '/image.jfif',
-        '/image2.jpg',
-        '/imagesonfrontpage.jfif',
-        '/11_Corps_(Pakistan)_logo.png',
-        '/logo.png'
-      ]
-    },
-    {
-      id: 3,
-      title: 'Pictorial Highlights',
-      date: '11 Corps',
-      coverImages: [
-        '/imagesonfrontpage.jfif',
-        '/image.jfif',
-        '/bg.avif'
-      ],
-      galleryImages: [
-        '/imagesonfrontpage.jfif',
-        '/image.jfif',
-        '/image2.jpg',
-        '/bg.avif',
-        '/11_Corps_(Pakistan)_logo.png',
-        '/logo.png'
-      ]
-    }
-  ];
-
   // Initialize card image indices
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const initialIndices = {};
     events.forEach(event => {
@@ -115,7 +114,6 @@ const PictorialGlimpses = () => {
   }, []);
 
   // Auto-rotate event cards every 6-8 seconds (using 7 seconds)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (selectedEvent) return; // Don't rotate cards when in gallery view
 
@@ -268,7 +266,6 @@ const PictorialGlimpses = () => {
   };
 
   // Mouse wheel handler
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleWheel = (e) => {
       if (selectedEvent) return; // Don't scroll in gallery view

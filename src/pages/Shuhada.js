@@ -191,11 +191,7 @@ export const sampleShuhadaData = [
   }
 ];
 
-const Shuhada = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const defaultFilters = {
+const defaultFilters = {
     type: 'All Shaheeds', // Default: Show all Shaheeds (Mil Shaheed and Civ Shaheed)
     name: '',
     armyNo: '',
@@ -205,7 +201,11 @@ const Shuhada = () => {
     operation: '',
     date: '',
     year: ''
-  };
+};
+
+const Shuhada = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // State for searchable dropdowns
   const [searchInputs, setSearchInputs] = useState({
@@ -246,7 +246,6 @@ const Shuhada = () => {
   });
 
   // Load filters from sessionStorage or navigation state
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const [filters, setFilters] = useState(() => {
     // First check if we're coming from Summaries page
     if (location.state && location.state.fromSummary) {
@@ -339,7 +338,6 @@ const Shuhada = () => {
   }, [location.state]);
 
   // Restore filters when returning from detail page
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const currentPath = location.pathname;
     

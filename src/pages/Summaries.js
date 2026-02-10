@@ -125,7 +125,6 @@ const Summaries = () => {
   const hasHandledInitialStateRef = useRef(false);
 
   // Restore state when returning from Shuhada page, or reset to first tab when coming from Home
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const currentState = location.state;
     
@@ -201,7 +200,7 @@ const Summaries = () => {
       }
       hasHandledInitialStateRef.current = true;
     }
-  }, [location.state]);
+  }, [location.state, activeTab]);
 
   // Reset views to default when switching tabs (but not when restoring from returnPath)
   useEffect(() => {
